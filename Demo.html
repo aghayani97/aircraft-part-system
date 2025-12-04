@@ -174,12 +174,26 @@
             border-radius: 10px;
             padding: 20px;
             margin-top: 30px;
-        }
+        card.addEventListener('click', function(e) {
+    e.preventDefault(); // جلوگیری از رفتار پیش‌فرض
+    const cardTitle = this.querySelector('h3').textContent;
+    console.log(`Clicked: ${cardTitle}`);
+    
+    // باز کردن در همان تب
+    window.location.href = 'https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html';
+});
         
         .note-box h4 {
                    // بدون آلرت - مستقیماً لینک باز شود
             margin-bottom: 10px;
-        }
+        card.addEventListener('click', function(e) {
+    e.preventDefault(); // جلوگیری از رفتار پیش‌فرض
+    const cardTitle = this.querySelector('h3').textContent;
+    console.log(`Clicked: ${cardTitle}`);
+    
+    // باز کردن در همان تب
+    window.location.href = 'https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html';
+});
         
         @media (max-width: 768px) {
             .container {
