@@ -153,7 +153,11 @@
             border-radius: 4px;
             font-family: monospace;
             color: #FFCC80;
-        }
+        card.addEventListener('click', function(e) {
+    const cardTitle = this.querySelector('h3').textContent;
+    console.log(`Clicked: ${cardTitle}`);
+    // بدون آلرت - مستقیماً لینک کار کند
+});
         
         .footer {
             text-align: center;
