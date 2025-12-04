@@ -201,21 +201,21 @@
         </div>
         
         <div class="links-grid">
-            <a href="file:///C:/Users/s.aghayani/Downloads/deepseek_html_20251203_2aa7f2.html" class="link-card" target="_blank">
+            <a href="https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html" class="link-card">
                 <span class="link-icon">🚀</span>
                 <h3><span class="status-indicator status-live"></span> Live Working Form</h3>
                 <p>Interactive form with local database. Fill form, save requests, and send to WhatsApp.</p>
                 <div style="color: #4FC3F7; font-weight: bold; margin-top: 15px;">Click to Open →</div>
             </a>
             
-            <a href="https://sam97agha.app.n8n.cloud" class="link-card" target="_blank">
+            <a href="https://samiraaghayani1989.app.n8n.cloud" class="link-card" target="_blank">
                 <span class="link-icon">🔧</span>
                 <h3>N8N Automation Dashboard</h3>
                 <p>View the automation workflows, webhook configurations, and data processing pipelines.</p>
                 <div style="color: #4FC3F7; font-weight: bold; margin-top: 15px;">Login Required →</div>
             </a>
             
-            <a href="https://github.com" class="link-card" target="_blank">
+            <a href="https://github.com/aghayani97/aircraft-part-system" class="link-card" target="_blank">
                 <span class="link-icon">📁</span>
                 <h3>Source Code Repository</h3>
                 <p>Complete HTML/CSS/JavaScript source code with detailed comments and documentation.</p>
@@ -226,7 +226,7 @@
         <div class="instructions">
             <h3>📋 Instructions for Testing:</h3>
             <ol>
-                <li><strong>Click "Live Working Form"</strong> - This opens the actual form on your computer</li>
+                <li><strong>Click "Live Working Form"</strong> - This opens the actual form</li>
                 <li><strong>Fill the form with sample data:</strong>
                     <br>• Part Number: <code>A320-123456-789</code>
                     <br>• Description: <code>Flap Track Assembly</code>
@@ -252,22 +252,14 @@
     </div>
 
     <script>
-        // Add click tracking
+        // Add click tracking - NO ALERTS
         document.querySelectorAll('.link-card').forEach(card => {
             card.addEventListener('click', function(e) {
                 const cardTitle = this.querySelector('h3').textContent;
                 console.log(`Clicked: ${cardTitle}`);
-                alert(`Opening: ${cardTitle}\n\nIf it doesn't open, check popup blocker or open manually from Downloads folder.`);
+                // بدون alert - مستقیماً لینک کار کند
             });
         });
-        
-        // Auto-open form after 3 seconds
-        setTimeout(() => {
-            const shouldAutoOpen = confirm('Open the Working Form automatically?');
-            if (shouldAutoOpen) {
-                window.open('file:///C:/Users/s.aghayani/Downloads/deepseek_html_20251203_2aa7f2.html', '_blank');
-            }
-        }, 3000);
     </script>
 </body>
 </html>
