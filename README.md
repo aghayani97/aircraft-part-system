@@ -1,2 +1,1 @@
-# aircraft-part-system
-Aircraft Part Removal System for Sepehran Airline
+fetch('https://samiraaghayani1989.app.n8n.cloud/webhook/EWgUrzFLY1N7QLdS',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partNumber:"TEST001",description:"تست واتساپ",aircraftType:"B737",priority:"HIGH",date:"2024-12-04"})}).then(r=>r.json()).then(d=>console.log('✅',d)).catch(e=>console.error('❌',e));
