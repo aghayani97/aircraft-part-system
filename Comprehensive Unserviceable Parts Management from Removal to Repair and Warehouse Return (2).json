@@ -1,0 +1,1562 @@
+{
+  "name": "Comprehensive Unserviceable Parts Management from Removal to Repair and Warehouse Return",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "✈️ سپهران ایرلاین - فرم جداسازی قطعه Unserviceable",
+        "formDescription": "هواپیمایی سپهران (SHI) | سیستم مدیریت قطعات  خارجی تعمیری ",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Part Number (شماره قطعه)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Serial Number (شماره سریال)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Aircraft Registration (رجیستری هواپیما)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Aircraft Type (نوع هواپیما)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "ATA Chapter/Position (فصل ATA/موقعیت)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Priority (اولویت)",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "AOG"
+                  },
+                  {
+                    "option": "Critical"
+                  },
+                  {
+                    "option": "Routine"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Defect Description (شرح عیب)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Technician Name (نام تکنسین)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Technician ID (شماره پرسنلی)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "TSN Hours (ساعات از نو)",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "CSN Cycles (سیکل از نو)",
+              "fieldType": "number"
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "693ec4a4-e59e-4363-a9f7-7f2b331e84a4",
+      "name": "Part Removal Form",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        448,
+        384
+      ],
+      "webhookId": "cf24f42f-0292-42e5-b742-1a40de1c64c6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "engineeringEmail",
+              "value": "engineering@sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "warehouseEmail",
+              "value": "warehouse@sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-3",
+              "name": "mroApiEndpoint",
+              "value": "<__PLACEHOLDER_VALUE__MRO vendor API endpoint URL__>",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "companyName",
+              "value": "ایرلاین سپهران",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "procedureNumber",
+              "value": "SEP-MNT-PRO-007",
+              "type": "string"
+            },
+            {
+              "id": "id-6",
+              "name": "aogTatHours",
+              "value": 72,
+              "type": "number"
+            },
+            {
+              "id": "id-7",
+              "name": "criticalTatHours",
+              "value": 168,
+              "type": "number"
+            },
+            {
+              "id": "id-8",
+              "name": "routineTatHours",
+              "value": 720,
+              "type": "number"
+            },
+            {
+              "id": "id-9",
+              "name": "aogRfpCount",
+              "value": 3,
+              "type": "number"
+            },
+            {
+              "id": "id-10",
+              "name": "criticalRfpCount",
+              "value": 2,
+              "type": "number"
+            },
+            {
+              "id": "id-11",
+              "name": "routineRfpCount",
+              "value": 1,
+              "type": "number"
+            },
+            {
+              "id": "id-12",
+              "name": "aogEscalation",
+              "value": "IMMEDIATE",
+              "type": "string"
+            },
+            {
+              "id": "id-13",
+              "name": "criticalEscalation",
+              "value": "STANDARD",
+              "type": "string"
+            },
+            {
+              "id": "id-14",
+              "name": "routineEscalation",
+              "value": "NORMAL",
+              "type": "string"
+            },
+            {
+              "id": "id-15",
+              "name": "companyNameEn",
+              "value": "Sepehran Airlines",
+              "type": "string"
+            },
+            {
+              "id": "id-16",
+              "name": "companyWebsite",
+              "value": "https://flysepehran.com",
+              "type": "string"
+            },
+            {
+              "id": "id-17",
+              "name": "icaoCode",
+              "value": "SHI",
+              "type": "string"
+            },
+            {
+              "id": "id-18",
+              "name": "emailDomain",
+              "value": "sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-19",
+              "name": "logoUrl",
+              "value": "https://flysepehran.com/images/logo.png",
+              "type": "string"
+            },
+            {
+              "id": "id-20",
+              "name": "colorPrimary",
+              "value": "#0056A3",
+              "type": "string"
+            },
+            {
+              "id": "id-21",
+              "name": "colorSecondary",
+              "value": "#FFFFFF",
+              "type": "string"
+            },
+            {
+              "id": "id-22",
+              "name": "colorAccent",
+              "value": "#FFB81C",
+              "type": "string"
+            },
+            {
+              "id": "id-23",
+              "name": "qualityEmail",
+              "value": "quality@sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-24",
+              "name": "maintenanceEmail",
+              "value": "maintenance@sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-25",
+              "name": "planningEmail",
+              "value": "planning@sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-26",
+              "name": "procurementEmail",
+              "value": "procurement@sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-27",
+              "name": "operationsEmail",
+              "value": "operations@sepehran.aero",
+              "type": "string"
+            },
+            {
+              "id": "id-28",
+              "name": "companyTagline",
+              "value": "رویای پرواز، احساس پرواز",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "985615be-b650-4aeb-85e7-3e7f9a321e67",
+      "name": "Workflow Configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "unserviceable_parts"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "removalDate": "={{ $now.toISO() }}",
+            "status": "U/S - Awaiting Repair",
+            "workflowId": "={{ $execution.id }}",
+            "partNumber": "={{ $('Part Removal Form').item.json.partNumber }}",
+            "serialNumber": "={{ $('Part Removal Form').item.json.serialNumber }}",
+            "aircraftRegistration": "={{ $('Part Removal Form').item.json.aircraftRegistration }}",
+            "removalReason": "={{ $('Part Removal Form').item.json.removalReason }}",
+            "priorityType": "={{ $('Part Removal Form').item.json.priorityType }}",
+            "technicianName": "={{ $('Part Removal Form').item.json.technicianName }}",
+            "location": "={{ $('Part Removal Form').item.json.location }}",
+            "trackingId": "={{ 'SEP-' + $now.format('yyyyMMdd') + '-' + Math.random().toString(36).substr(2, 5).toUpperCase() }}",
+            "airlineCode": "SHI",
+            "companyName": "={{ $('Workflow Configuration').first().json.companyName }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "35e911cd-5777-47df-bb70-c7bbc596b153",
+      "name": "Store Part Removal Data",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.priority }}",
+                    "rightValue": "AOG",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "aac0aa24-41fa-4796-9fc5-5fc7aed50a3a"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "AOG"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.priority }}",
+                    "rightValue": "Critical",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "40be3640-143b-48bd-a1c3-609a465d6cf2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Critical"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.priority }}",
+                    "rightValue": "Routine",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "2ebb90e7-8272-41a5-b07c-3f6b7f213889"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Routine"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Unknown Priority"
+        }
+      },
+      "id": "879b2021-ca88-4465-a722-1c2c6f993c76",
+      "name": "Prioritize by Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        1344,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "priorityLevel",
+              "value": "AOG - Aircraft On Ground",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "targetTAT",
+              "value": "={{ $('Workflow Configuration').first().json.aogTatHours }}",
+              "type": "number"
+            },
+            {
+              "id": "id-3",
+              "name": "tatUnit",
+              "value": "hours",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "urgencyFlag",
+              "value": "CRITICAL",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "rfpCount",
+              "value": "={{ $('Workflow Configuration').first().json.aogRfpCount }}",
+              "type": "number"
+            },
+            {
+              "id": "id-6",
+              "name": "escalationLevel",
+              "value": "={{ $('Workflow Configuration').first().json.aogEscalation }}",
+              "type": "string"
+            },
+            {
+              "id": "id-7",
+              "name": "notifyRoles",
+              "value": "ENGINEERING_MANAGER,PLANNING_MANAGER,SUPPLY_CHAIN_MANAGER",
+              "type": "string"
+            },
+            {
+              "id": "id-8",
+              "name": "criteria",
+              "value": "AIRCRAFT_GROUNDED,NO_SPARE_AVAILABLE,SCHEDULE_IMPACT>4H",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "07f99258-2fbe-4924-985f-dbaf59305621",
+      "name": "AOG Priority Handler",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "priorityLevel",
+              "value": "Critical",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "targetTAT",
+              "value": "={{ $('Workflow Configuration').first().json.criticalTatHours }}",
+              "type": "number"
+            },
+            {
+              "id": "id-3",
+              "name": "tatUnit",
+              "value": "hours",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "urgencyFlag",
+              "value": "HIGH",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "rfpCount",
+              "value": "={{ $('Workflow Configuration').first().json.criticalRfpCount }}",
+              "type": "number"
+            },
+            {
+              "id": "id-6",
+              "name": "escalationLevel",
+              "value": "={{ $('Workflow Configuration').first().json.criticalEscalation }}",
+              "type": "string"
+            },
+            {
+              "id": "id-7",
+              "name": "notifyRoles",
+              "value": "ENGINEERING_SUPERVISOR",
+              "type": "string"
+            },
+            {
+              "id": "id-8",
+              "name": "criteria",
+              "value": "SCHEDULE_IMPACT<4H,HIGH_VALUE_PART",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "01d0486b-60f2-4cf6-828c-cf8c2e0984ea",
+      "name": "Critical Priority Handler",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "priorityLevel",
+              "value": "Routine",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "targetTAT",
+              "value": "={{ $('Workflow Configuration').first().json.routineTatHours }}",
+              "type": "number"
+            },
+            {
+              "id": "id-3",
+              "name": "tatUnit",
+              "value": "hours",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "urgencyFlag",
+              "value": "NORMAL",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "rfpCount",
+              "value": "={{ $('Workflow Configuration').first().json.routineRfpCount }}",
+              "type": "number"
+            },
+            {
+              "id": "id-6",
+              "name": "escalationLevel",
+              "value": "={{ $('Workflow Configuration').first().json.routineEscalation }}",
+              "type": "string"
+            },
+            {
+              "id": "id-7",
+              "name": "notifyRoles",
+              "value": "ENGINEERING_DEPT",
+              "type": "string"
+            },
+            {
+              "id": "id-8",
+              "name": "criteria",
+              "value": "DEFAULT",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "5b7caaac-3dcf-404c-b2f7-02b6ef4a3f07",
+      "name": "Routine Priority Handler",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Workflow Configuration').first().json.mroApiEndpoint }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "partNumber",
+              "value": "={{ $json.partNumber }}"
+            },
+            {
+              "name": "serialNumber",
+              "value": "={{ $json.serialNumber }}"
+            },
+            {
+              "name": "defectDescription",
+              "value": "={{ $json.defectDescription }}"
+            },
+            {
+              "name": "priority",
+              "value": "={{ $json.priority }}"
+            },
+            {
+              "name": "targetTAT",
+              "value": "={{ $json.targetTAT }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1dc1e033-7c4f-4895-9fae-0ca4f1f51888",
+      "name": "Send RFQ to MRO Vendors",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "repair_orders"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roNumber": "={{ 'RO-' + $now.format('yyyyMMdd') + '-' + $json.serialNumber }}",
+            "partNumber": "={{ $json.partNumber }}",
+            "serialNumber": "={{ $json.serialNumber }}",
+            "priority": "={{ $json.priorityLevel }}",
+            "targetTAT": "={{ $json.targetTAT }}",
+            "sentDate": "={{ $now.toISO() }}",
+            "status": "Sent to MRO"
+          }
+        },
+        "options": {}
+      },
+      "id": "ed1fdd34-fa89-48db-8bee-f93c9d51feb4",
+      "name": "Log Repair Orders",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "none",
+        "options": {}
+      },
+      "id": "6e6b3df4-2607-46ef-bc8c-09b610e1dead",
+      "name": "Notify Engineering Team",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2464,
+        288
+      ],
+      "webhookId": "545ee8f1-2de6-482a-a7c0-2c92f9fa14b4"
+    },
+    {
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "شماره RO",
+              "placeholder": "={{ $json.roNumber }}",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "شماره قطعه",
+              "placeholder": "={{ $json.partNumber }}",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "سریال قطعه",
+              "placeholder": "={{ $json.serialNumber }}",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "نتیجه بازرسی",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Pass - قبول"
+                  },
+                  {
+                    "option": "Fail - رد"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "نام بازرس",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "شماره پرسنلی بازرس",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "یادداشت‌های بازرسی",
+              "fieldType": "textarea"
+            },
+            {
+              "fieldLabel": "مدارک کامل است؟",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Yes - بله"
+                  },
+                  {
+                    "option": "No - خیر"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "formTitle": "✈️ سپهران ایرلاین - بازرسی کیفیت (QC) قطعه بازگشتی",
+          "formDescription": "هواپیمایی سپهران (SHI) | رویه: SEP-MNT-PRO-007 | Quality Control Inspection"
+        }
+      },
+      "id": "d172fbe5-1c2a-4089-8646-68a2773aff1b",
+      "name": "Quality Control Inspection Form",
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.3,
+      "position": [
+        2688,
+        288
+      ],
+      "webhookId": "9e48bfa2-d68a-4efa-9c3a-e8eee476ba03"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "qc_inspections"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roNumber": "={{ $json.roNumber }}",
+            "partNumber": "={{ $json.partNumber }}",
+            "serialNumber": "={{ $json.serialNumber }}",
+            "qcResult": "={{ $json.qcResult }}",
+            "inspectorName": "={{ $json.inspectorName }}",
+            "inspectorId": "={{ $json.inspectorId }}",
+            "qcNotes": "={{ $json.qcNotes }}",
+            "documentationComplete": "={{ $json.documentationComplete }}",
+            "inspectionDate": "={{ $now.toISO() }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "a6864d35-5772-4c1c-855b-c6e1636222ed",
+      "name": "Log QC Inspection Results",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        2912,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "id-1",
+              "leftValue": "={{ $json.qcResult }}",
+              "rightValue": "Pass",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5abfbd4a-7558-48db-a8e9-ba39b6670914",
+      "name": "Check QC Pass/Fail",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3136,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "unserviceable_parts"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "serialNumber",
+              "keyValue": "={{ $json.serialNumber }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "Serviceable - Ready for Warehouse",
+            "qcPassDate": "={{ $now.toISO() }}",
+            "qcInspector": "={{ $json.inspectorName }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "adea5969-e486-4528-8feb-577f9d901ac1",
+      "name": "Update Part to Serviceable",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "none",
+        "options": {}
+      },
+      "id": "16cb029b-2559-4a0b-8107-061ef4d503d0",
+      "name": "Notify Warehouse - Part Ready",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        3808,
+        192
+      ],
+      "webhookId": "efad7fb2-3af9-41d0-aca2-358a8d0388f8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "failureReason",
+              "value": "={{ $json.qcNotes }}",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "nextAction",
+              "value": "Return to MRO for Re-work",
+              "type": "string"
+            },
+            {
+              "id": "id-3",
+              "name": "failureDate",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "b9db7f3c-7cc8-42f3-938d-2249c24a15b5",
+      "name": "Handle QC Failure",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3360,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "none",
+        "options": {}
+      },
+      "id": "7e14da59-eda2-49eb-b86c-d9cad2244149",
+      "name": "Notify QC Failure",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        3584,
+        384
+      ],
+      "webhookId": "b902dcc6-6739-4387-af6d-6f4a4c2e0e76"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "id": "5d6d935e-f768-4408-9db2-4e229d7fe409",
+      "name": "Merge Priority Paths",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1792,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const removalDate = new Date($('Store Part Removal Data').first().json.removalDate);\nconst returnDate = new Date();\nconst tatHours = Math.round((returnDate - removalDate) / (1000 * 60 * 60));\nconst targetTAT = $json.targetTAT;\nconst tatStatus = tatHours <= targetTAT ? 'On Time' : 'Delayed';\n\nreturn {\n  ...items[0].json,\n  actualTAT: tatHours,\n  targetTAT: targetTAT,\n  tatStatus: tatStatus,\n  returnDate: returnDate.toISOString()\n};"
+      },
+      "id": "0b89e00a-f141-4f66-80ef-9abcbe20be00",
+      "name": "Calculate TAT Metrics",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3584,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sepehran-part-removal",
+        "options": {}
+      },
+      "id": "57414f48-0cba-46ba-9cc2-8050bc337d49",
+      "name": "API Webhook - Part Removal",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        192
+      ],
+      "webhookId": "834fcc84-bd3a-4ca4-858f-70296d02122a"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "partNumber",
+              "value": "={{ $json.body.part_number }}",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "serialNumber",
+              "value": "={{ $json.body.serial_number }}",
+              "type": "string"
+            },
+            {
+              "id": "id-3",
+              "name": "aircraftRegistration",
+              "value": "={{ $json.body.aircraft_reg }}",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "aircraftType",
+              "value": "={{ $json.body.aircraft_type }}",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "ataChapterPosition",
+              "value": "={{ $json.body.ata_chapter || 'N/A' }}",
+              "type": "string"
+            },
+            {
+              "id": "id-6",
+              "name": "priority",
+              "value": "={{ $json.body.priority }}",
+              "type": "string"
+            },
+            {
+              "id": "id-7",
+              "name": "defectDescription",
+              "value": "={{ $json.body.defect_description }}",
+              "type": "string"
+            },
+            {
+              "id": "id-8",
+              "name": "technicianName",
+              "value": "={{ $json.body.technician_name || 'API Submission' }}",
+              "type": "string"
+            },
+            {
+              "id": "id-9",
+              "name": "technicianId",
+              "value": "={{ $json.body.technician_id || 'API' }}",
+              "type": "string"
+            },
+            {
+              "id": "id-10",
+              "name": "tsnHours",
+              "value": "={{ $json.body.tsn_hours || 0 }}",
+              "type": "number"
+            },
+            {
+              "id": "id-11",
+              "name": "csnCycles",
+              "value": "={{ $json.body.csn_cycles || 0 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "65ed3b15-e5f5-4d5b-a314-eecd5162bb18",
+      "name": "Map API Data to Form Format",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "id": "c7079b70-8e28-4a17-883f-080badaa76b6",
+      "name": "Merge Form and API Inputs",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        672,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sepehran-whatsapp-maintenance",
+        "options": {}
+      },
+      "id": "4ed006ce-881f-4f8a-aabe-6c032e76e84c",
+      "name": "📱 WhatsApp Webhook Receiver",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "e0a48d4c-86de-46d7-9cc0-e4378ed55867"
+    },
+    {
+      "parameters": {
+        "jsCode": "// WhatsApp Maintenance Command Parser for Sepehran Airlines\n// Supports Persian and English commands\n\nconst inputText = $input.first().json.body?.message?.text || $input.first().json.text || '';\nconst phoneNumber = $input.first().json.body?.message?.from || 'unknown';\nconst timestamp = new Date();\n\n// Command detection patterns\nconst commandPatterns = {\n  report: /^(REPORT|گزارش|ثبت)/i,\n  aog: /^(AOG|اورژانس|فوری)/i,\n  status: /^(STATUS|وضعیت|پیگیری)/i,\n  help: /^(HELP|کمک|راهنما)/i\n};\n\n// Part number patterns (ABC-1234-5678 or 1234A5678)\nconst partNumberPattern = /([A-Z0-9]{3,4}-[0-9]{4}-[0-9]{4}|[0-9]{4}[A-Z][0-9]{4})/i;\n\n// Aircraft registration pattern (EP-XXX)\nconst aircraftRegPattern = /(EP-[A-Z]{3})/i;\n\n// Serial number pattern\nconst serialNumberPattern = /(?:S\\/N|SN|سریال)[:\\s]*([A-Z0-9-]+)/i;\n\n// ATA chapter pattern\nconst ataPattern = /(?:ATA|فصل)[:\\s]*(\\d{2})/i;\n\n// Priority detection\nconst priorityPatterns = {\n  aog: /(AOG|اورژانس|فوری|URGENT)/i,\n  critical: /(CRITICAL|مهم|IMPORTANT|بحرانی)/i,\n  routine: /(ROUTINE|معمولی|NORMAL|عادی)/i\n};\n\n// Defect description extraction (after keywords)\nconst defectPattern = /(?:عیب|DEFECT|مشکل|PROBLEM)[:\\s]*(.+?)(?:\\n|$)/i;\n\n// Detect command type\nlet commandType = 'UNKNOWN';\nfor (const [type, pattern] of Object.entries(commandPatterns)) {\n  if (pattern.test(inputText)) {\n    commandType = type.toUpperCase();\n    break;\n  }\n}\n\n// Extract data\nconst partNumberMatch = inputText.match(partNumberPattern);\nconst aircraftRegMatch = inputText.match(aircraftRegPattern);\nconst serialNumberMatch = inputText.match(serialNumberPattern);\nconst ataMatch = inputText.match(ataPattern);\nconst defectMatch = inputText.match(defectPattern);\n\n// Determine priority\nlet priority = 'Routine';\nif (priorityPatterns.aog.test(inputText)) {\n  priority = 'AOG';\n} else if (priorityPatterns.critical.test(inputText)) {\n  priority = 'Critical';\n}\n\n// Generate IDs\nconst dateStr = timestamp.toISOString().slice(0, 10).replace(/-/g, '');\nconst randomSuffix = Math.random().toString(36).substr(2, 5).toUpperCase();\nconst caseId = `SEP-${dateStr}-${randomSuffix}`;\n\nconst yearShort = timestamp.getFullYear().toString().slice(-2);\nconst randomTrackingId = Math.random().toString(36).substr(2, 6).toUpperCase();\nconst trackingId = `SHI-${yearShort}-${randomTrackingId}`;\n\n// Build result\nconst result = {\n  commandType: commandType,\n  phoneNumber: phoneNumber,\n  timestamp: timestamp.toISOString(),\n  partNumber: partNumberMatch ? partNumberMatch[1] : null,\n  serialNumber: serialNumberMatch ? serialNumberMatch[1] : null,\n  aircraftRegistration: aircraftRegMatch ? aircraftRegMatch[1] : null,\n  ataChapter: ataMatch ? ataMatch[1] : null,\n  priority: priority,\n  defectDescription: defectMatch ? defectMatch[1].trim() : inputText.substring(0, 200),\n  caseId: caseId,\n  trackingId: trackingId,\n  rawMessage: inputText,\n  parsed: true,\n  source: 'WhatsApp'\n};\n\n// Return help message if HELP command\nif (commandType === 'HELP') {\n  result.helpMessage = `✈️ سپهران ایرلاین - دستورات WhatsApp\\n\\n📝 REPORT/گزارش - ثبت قطعه معیوب\\n🚨 AOG/اورژانس - گزارش فوری\\n📊 STATUS/وضعیت - پیگیری وضعیت\\n❓ HELP/کمک - راهنما\\n\\nفرمت نمونه:\\nREPORT\\nPart: 1234A5678\\nAircraft: EP-ABC\\nS/N: XYZ123\\nATA: 32\\nعیب: نشتی هیدرولیک\\nاولویت: AOG`;\n}\n\nreturn result;"
+      },
+      "id": "867dd4b3-9685-4ded-a16e-72e489fd444a",
+      "name": "🔧 Parse WhatsApp Maintenance Command",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "partNumber",
+              "value": "={{ $json.parsedData.partNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "serialNumber",
+              "value": "={{ $json.parsedData.serialNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "id-3",
+              "name": "aircraftRegistration",
+              "value": "={{ $json.parsedData.aircraftRegistration }}",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "aircraftType",
+              "value": "WhatsApp Submission",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "ataChapterPosition",
+              "value": "={{ $json.parsedData.ataChapterPosition || 'N/A' }}",
+              "type": "string"
+            },
+            {
+              "id": "id-6",
+              "name": "priority",
+              "value": "={{ $json.parsedData.priority }}",
+              "type": "string"
+            },
+            {
+              "id": "id-7",
+              "name": "defectDescription",
+              "value": "={{ $json.rawMessage }}",
+              "type": "string"
+            },
+            {
+              "id": "id-8",
+              "name": "technicianName",
+              "value": "WhatsApp User",
+              "type": "string"
+            },
+            {
+              "id": "id-9",
+              "name": "technicianId",
+              "value": "={{ $json.phoneNumber }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "44cdcae3-e72e-4dfd-a0e2-7f42055572b1",
+      "name": "Map WhatsApp to Form Format",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v18.0/<__PLACEHOLDER_VALUE__Phone-Number-ID__>/messages",
+        "authentication": "genericCredentialType",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer <__PLACEHOLDER_VALUE__WhatsApp Access Token__>"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"recipient_type\": \"individual\",\n  \"to\": \"989917525002\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": \"🚨 *سپهران ایرلاین - هشدار تعمیرات*\\n\\n📋 *اولویت:* {{ $json.priority }}\\n🔧 *شماره قطعه:* {{ $json.partNumber }}\\n✈️ *رجیستری:* {{ $json.aircraftRegistration }}\\n📌 *شماره پرونده:* {{ $json.caseId || $json.trackingId }}\\n\\n📞 *تماس:* +98-21-12345678\\n⏰ *زمان:* {{ $now.setZone('Asia/Tehran').toFormat('yyyy/MM/dd HH:mm') }}\\n\\n_سیستم مدیریت تعمیرات سپهران_\"\n  }\n}",
+        "options": {}
+      },
+      "id": "2370bc74-8898-4c25-9fb6-6c4c83f293ef",
+      "name": "📱 Send WhatsApp Alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        96
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// استخراج کد تأیید از پیامک و آماده‌سازی ایمیل\nconst smsText = $input.first().json.body || $input.first().json.text || $input.first().json.sms;\n\nif (!smsText) {\n  return [{\n    json: {\n      error: \"No SMS text received\",\n      status: \"error\"\n    }\n  }];\n}\n\n// استخراج کد ۵-۶ رقمی\nconst codeMatch = smsText.match(/\\b\\d{5,6}\\b/);\n// استخراج شماره سفارش\nconst orderMatch = smsText.match(/Order[:\\s]*([A-Z0-9-]+)/i) || \n                   smsText.match(/(ORD-\\d+)/i) || \n                   smsText.match(/([A-Z]{3}-\\d{5})/i);\n\nconst verificationCode = codeMatch ? codeMatch[0] : \"N/A\";\nconst orderId = orderMatch ? orderMatch[1] : \"SEP-\" + Math.floor(10000 + Math.random() * 90000);\n\n// تشخیص نوع قطعه برای ارسال به مخاطب مناسب\nlet toEmails = [];\nlet ccEmails = [];\n\n// بررسی نوع قطعه از متن پیامک\nconst smsLower = smsText.toLowerCase();\nif (smsLower.includes('unserviceable') || smsLower.includes('unsrv') || smsLower.includes('قطعه معیوب')) {\n  // قطعات unserviceable - به ایمیل شما و انبار\n  toEmails = [\"s.aghayani@sepehran.aero\", \"warehouse@sepehran.aero\"];\n  ccEmails = [];\n} else {\n  // سایر قطعات - فقط به انبار\n  toEmails = [\"warehouse@sepehran.aero\"];\n  ccEmails = [\"s.aghayani@sepehran.aero\"];\n}\n\n// ساخت HTML ایمیل حرفه‌ای\nconst htmlContent = `<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Aircraft Part Order Verification - Sepehran Airlines</title>\n    <style>\n        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; }\n        .container { max-width: 700px; margin: 20px auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 0 20px rgba(0,0,0,0.1); }\n        .header { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); color: white; padding: 30px; text-align: center; }\n        .airline-logo { font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #ffffff; }\n        .airline-name { font-size: 14px; opacity: 0.9; }\n        .content { padding: 30px; }\n        .status-badge { background: #00c853; color: white; padding: 10px 20px; border-radius: 20px; display: inline-block; font-weight: bold; margin-bottom: 20px; }\n        .info-box { background: #f8f9fa; border-left: 4px solid #1a237e; padding: 20px; margin: 20px 0; border-radius: 0 5px 5px 0; }\n        .info-row { display: flex; margin-bottom: 10px; }\n        .info-label { flex: 1; font-weight: bold; color: #1a237e; }\n        .info-value { flex: 2; }\n        .verification-code { font-size: 24px; font-weight: bold; color: #1a237e; background: #e8eaf6; padding: 10px; border-radius: 5px; text-align: center; letter-spacing: 3px; }\n        .footer { background: #1a237e; color: white; padding: 20px; text-align: center; font-size: 12px; }\n        .contact-info { display: flex; justify-content: center; gap: 30px; margin-top: 15px; }\n        .contact-item { display: flex; align-items: center; gap: 8px; }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <div class=\"airline-logo\">✈️ SEPEHRAΝ AIRLIΝES</div>\n            <div class=\"airline-name\">Aircraft Maintenance & Engineering Department</div>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"status-badge\">✅ ORDER VERIFIED SUCCESSFULLY</div>\n            \n            <h2 style=\"color: #1a237e; margin-top: 0;\">Aircraft Part Order Confirmation</h2>\n            \n            <div class=\"info-box\">\n                <div class=\"info-row\">\n                    <div class=\"info-label\">Order ID:</div>\n                    <div class=\"info-value\">${orderId}</div>\n                </div>\n                <div class=\"info-row\">\n                    <div class=\"info-label\">Verification Code:</div>\n                    <div class=\"info-value\">\n                        <div class=\"verification-code\">${verificationCode}</div>\n                    </div>\n                </div>\n                <div class=\"info-row\">\n                    <div class=\"info-label\">Maintenance Center:</div>\n                    <div class=\"info-value\">Tehran Imam Khomeini Airport (IKA) Maintenance Hub</div>\n                </div>\n                <div class=\"info-row\">\n                    <div class=\"info-label\">Date & Time:</div>\n                    <div class=\"info-value\">${new Date().toLocaleString('en-IR', {timeZone: 'Asia/Tehran'})}</div>\n                </div>\n                <div class=\"info-row\">\n                    <div class=\"info-label\">Part Status:</div>\n                    <div class=\"info-value\">${smsText.toLowerCase().includes('unserviceable') ? '🟥 Unserviceable - Requires Inspection' : '🟢 Serviceable - Ready for Installation'}</div>\n                </div>\n            </div>\n            \n            <p style=\"color: #666; line-height: 1.6;\">\n                This order has been successfully registered in the Sepehran Airlines Maintenance System. \n                Please proceed with the next steps according to the maintenance procedures.\n            </p>\n            \n            <div style=\"margin-top: 30px; padding: 15px; background: #e8eaf6; border-radius: 5px;\">\n                <h4 style=\"color: #1a237e; margin-top: 0;\">📋 Next Steps:</h4>\n                <ul style=\"color: #444;\">\n                    <li>Present this verification code to warehouse personnel</li>\n                    <li>Complete necessary documentation</li>\n                    <li>Schedule installation with maintenance team</li>\n                </ul>\n            </div>\n        </div>\n        \n        <div class=\"footer\">\n            <p>📍 <strong>Sepehran Airlines Maintenance Center</strong><br>\n            Tehran Imam Khomeini International Airport (IKA), Iran</p>\n            \n            <div class=\"contact-info\">\n                <div class=\"contact-item\">📞 +98 21 5102 0000</div>\n                <div class=\"contact-item\">✉️ maintenance@sepehran.aero</div>\n                <div class=\"contact-item\">🌐 www.sepehran.aero</div>\n            </div>\n            \n            <p style=\"margin-top: 20px; opacity: 0.7; font-size: 11px;\">\n                This is an automated message from Sepehran Airlines Maintenance Automation System.<br>\n                Please do not reply to this email.\n            </p>\n        </div>\n    </div>\n</body>\n</html>`;\n\n// ساخت داده‌های خروجی\nconst emailData = {\n  to: toEmails.join(\", \"),\n  cc: ccEmails.length > 0 ? ccEmails.join(\", \") : undefined,\n  subject: `✈️ Aircraft Part Order ${orderId} - Sepehran Airlines ${smsText.toLowerCase().includes('unserviceable') ? '[UNSERVICEABLE]' : ''}`,\n  html: htmlContent,\n  orderId: orderId,\n  verificationCode: verificationCode,\n  maintenanceCenter: \"Tehran IKA Maintenance Hub\",\n  partType: smsText.toLowerCase().includes('unserviceable') ? \"Unserviceable\" : \"Serviceable\",\n  timestamp: new Date().toISOString(),\n  recipientType: toEmails.includes(\"s.aghayani@sepehran.aero\") ? \"Unserviceable Part Alert\" : \"Normal Order\"\n};\n\nreturn [{ json: emailData }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2240,
+        96
+      ],
+      "id": "15c06f5b-1088-40b6-ab14-31aaed9628e8",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "path": "demo-click",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a698b928-bcd9-4d40-9aed-b16225a8c2ab",
+      "name": "🔗 Demo Click Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        608
+      ],
+      "webhookId": "0562b676-e502-4087-9984-e36c36c4c0b7"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Redirect with Analytics Tracking\n// Captures click data and redirects to target URL\n\nconst timestamp = new Date();\nconst clickData = $input.first().json;\n\n// Extract query parameters from webhook\nconst queryParams = clickData.query || {};\nconst targetUrl = queryParams.url || 'https://flysepehran.com';\nconst source = queryParams.source || 'unknown';\nconst campaign = queryParams.campaign || 'default';\n\n// Generate analytics data\nconst analyticsData = {\n  clickId: 'CLK-' + timestamp.getTime(),\n  timestamp: timestamp.toISOString(),\n  targetUrl: targetUrl,\n  source: source,\n  campaign: campaign,\n  userAgent: clickData.headers?.['user-agent'] || 'unknown',\n  ipAddress: clickData.headers?.['x-forwarded-for'] || clickData.headers?.['x-real-ip'] || 'unknown',\n  referer: clickData.headers?.referer || 'direct'\n};\n\n// Console logging for debugging\nconsole.log('=== Click Analytics ===');\nconsole.log('Click ID:', analyticsData.clickId);\nconsole.log('Timestamp:', analyticsData.timestamp);\nconsole.log('Target URL:', analyticsData.targetUrl);\nconsole.log('Source:', analyticsData.source);\nconsole.log('Campaign:', analyticsData.campaign);\nconsole.log('User Agent:', analyticsData.userAgent);\nconsole.log('IP Address:', analyticsData.ipAddress);\nconsole.log('======================');\n\n// Return HTTP 302 redirect response with HTML fallback\nreturn {\n  json: analyticsData,\n  binary: {},\n  pairedItem: { item: 0 },\n  // Set response headers for redirect\n  headers: {\n    'Location': targetUrl,\n    'Content-Type': 'text/html'\n  },\n  statusCode: 302,\n  // HTML fallback for browsers that don't follow redirect\n  body: `<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"refresh\" content=\"0;url=${targetUrl}\">\n    <title>Redirecting...</title>\n    <style>\n        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f5f5f5; }\n        .container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto; }\n        .logo { font-size: 48px; margin-bottom: 20px; }\n        h1 { color: #0056A3; }\n        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #0056A3; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }\n        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"logo\">✈️</div>\n        <h1>Redirecting...</h1>\n        <div class=\"spinner\"></div>\n        <p>If you are not redirected automatically, <a href=\"${targetUrl}\">click here</a>.</p>\n        <p style=\"color: #666; font-size: 12px; margin-top: 30px;\">Sepehran Airlines - Click ID: ${analyticsData.clickId}</p>\n    </div>\n    <script>\n        setTimeout(function() {\n            window.location.href = '${targetUrl}';\n        }, 100);\n    </script>\n</body>\n</html>`\n};"
+      },
+      "id": "221e9433-e127-43fc-8821-d80405e73920",
+      "name": "↩️ Redirect with Analytics",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        608
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Part Removal Form": {
+      "main": [
+        [
+          {
+            "node": "Merge Form and API Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Configuration": {
+      "main": [
+        [
+          {
+            "node": "Store Part Removal Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Store Part Removal Data": {
+      "main": [
+        [
+          {
+            "node": "Prioritize by Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prioritize by Type": {
+      "main": [
+        [
+          {
+            "node": "AOG Priority Handler",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Critical Priority Handler",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Routine Priority Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AOG Priority Handler": {
+      "main": [
+        [
+          {
+            "node": "Merge Priority Paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Critical Priority Handler": {
+      "main": [
+        [
+          {
+            "node": "Merge Priority Paths",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Routine Priority Handler": {
+      "main": [
+        [
+          {
+            "node": "Merge Priority Paths",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge Priority Paths": {
+      "main": [
+        [
+          {
+            "node": "Send RFQ to MRO Vendors",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "📱 Send WhatsApp Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send RFQ to MRO Vendors": {
+      "main": [
+        [
+          {
+            "node": "Log Repair Orders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Repair Orders": {
+      "main": [
+        [
+          {
+            "node": "Notify Engineering Team",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Engineering Team": {
+      "main": [
+        [
+          {
+            "node": "Quality Control Inspection Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quality Control Inspection Form": {
+      "main": [
+        [
+          {
+            "node": "Log QC Inspection Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log QC Inspection Results": {
+      "main": [
+        [
+          {
+            "node": "Check QC Pass/Fail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check QC Pass/Fail": {
+      "main": [
+        [
+          {
+            "node": "Update Part to Serviceable",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle QC Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Part to Serviceable": {
+      "main": [
+        [
+          {
+            "node": "Calculate TAT Metrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate TAT Metrics": {
+      "main": [
+        [
+          {
+            "node": "Notify Warehouse - Part Ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Handle QC Failure": {
+      "main": [
+        [
+          {
+            "node": "Notify QC Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API Webhook - Part Removal": {
+      "main": [
+        [
+          {
+            "node": "Map API Data to Form Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map API Data to Form Format": {
+      "main": [
+        [
+          {
+            "node": "Merge Form and API Inputs",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Form and API Inputs": {
+      "main": [
+        [
+          {
+            "node": "Workflow Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📱 WhatsApp Webhook Receiver": {
+      "main": [
+        [
+          {
+            "node": "🔧 Parse WhatsApp Maintenance Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔧 Parse WhatsApp Maintenance Command": {
+      "main": [
+        [
+          {
+            "node": "Map WhatsApp to Form Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map WhatsApp to Form Format": {
+      "main": [
+        [
+          {
+            "node": "Merge Form and API Inputs",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "📱 Send WhatsApp Alert": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔗 Demo Click Webhook": {
+      "main": [
+        [
+          {
+            "node": "↩️ Redirect with Analytics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3f5ebf28-00cb-436a-a010-9d657dd96e6b",
+  "meta": {
+    "instanceId": "7d4e834d51cb755a101b21a1c6f165718f234b21d0c31386a13698cb46598a35"
+  },
+  "id": "oLtkPgOULrmhPbA9",
+  "tags": []
+}
