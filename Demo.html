@@ -116,15 +116,9 @@
             background: #4CAF50;
             animation: pulse 2s infinite;
         }
-        <a href="https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html" class="link-card">
-            <a href="https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html" class="link-card">
-    <span class="link-icon">🚀</span>
-    <h3><span class="status-indicator status-live"></span> Live Working Form</h3>
-    <p>Interactive form with local database. Fill form, save requests, and send to WhatsApp.</p>
-    <div style="color: #4FC3F7; font-weight: bold; margin-top: 15px;">Click to Open →</div>
-</a>
-   class="link-card" 
-   onclick="window.location.href=this.href; return false;">
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
             50% { opacity: 0.5; }
             100% { opacity: 1; }
         }
@@ -159,11 +153,7 @@
             border-radius: 4px;
             font-family: monospace;
             color: #FFCC80;
-        card.addEventListener('click', function(e) {
-    const cardTitle = this.querySelector('h3').textContent;
-    console.log(`Clicked: ${cardTitle}`);
-    // بدون آلرت - مستقیماً لینک کار کند
-});
+        }
         
         .footer {
             text-align: center;
@@ -180,26 +170,12 @@
             border-radius: 10px;
             padding: 20px;
             margin-top: 30px;
-        card.addEventListener('click', function(e) {
-    e.preventDefault(); // جلوگیری از رفتار پیش‌فرض
-    const cardTitle = this.querySelector('h3').textContent;
-    console.log(`Clicked: ${cardTitle}`);
-    
-    // باز کردن در همان تب
-    window.location.href = 'https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html';
-});
+        }
         
         .note-box h4 {
-                   // بدون آلرت - مستقیماً لینک باز شود
+            color: #FFB74D;
             margin-bottom: 10px;
-        card.addEventListener('click', function(e) {
-    e.preventDefault(); // جلوگیری از رفتار پیش‌فرض
-    const cardTitle = this.querySelector('h3').textContent;
-    console.log(`Clicked: ${cardTitle}`);
-    
-    // باز کردن در همان تب
-    window.location.href = 'https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html';
-});
+        }
         
         @media (max-width: 768px) {
             .container {
@@ -274,24 +250,19 @@
             <p style="margin-top: 10px; font-size: 12px;">📧 Contact: s.aghayani | 📱 Support: +98 991 752 5002</p>
         </div>
     </div>
-// بدون آلرت
-                // بدون آلرت
+
+    <script>
+        // Add click tracking
         document.querySelectorAll('.link-card').forEach(card => {
             card.addEventListener('click', function(e) {
                 const cardTitle = this.querySelector('h3').textContent;
                 console.log(`Clicked: ${cardTitle}`);
                 alert(`Opening: ${cardTitle}\n\nIf it doesn't open, check popup blocker or open manually from Downloads folder.`);
             });
-        });        // Auto-open removed
-               // Auto-open removed
-        // setTimeout(() => {
-        //     const shouldAutoOpen = confirm('Open the Working Form automatically?');
-        //     const shouldAutoOpen = confirm('Open the Working Form automatically?');
-        //         window.open('https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html', '_blank');
-      // Auto-open removed
-                //         window.open('https://aghayani97.github.io/aircraft-part-system/Aircraft%20Part%20Removal%20System.html', '_blank');
-        //     }
-        // }, 3000);
+        });
+        
+        // Auto-open form after 3 seconds
+        setTimeout(() => {
             const shouldAutoOpen = confirm('Open the Working Form automatically?');
             if (shouldAutoOpen) {
                 window.open('file:///C:/Users/s.aghayani/Downloads/deepseek_html_20251203_2aa7f2.html', '_blank');
