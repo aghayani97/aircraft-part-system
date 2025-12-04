@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aircraft System - Complete Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0A1931, #1A237E);
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            color: #4FC3F7;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .demo-badge {
+            display: inline-block;
+            background: #FF9800;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #4FC3F7;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .link-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .link-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #81D4FA;
+        }
+        
+        .link-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .status-live {
+            background: #4CAF50;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .instructions {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border-left: 5px solid #FF9800;
+        }
+        
+        .instructions h3 {
+            color: #FFB74D;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .instructions code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #FFCC80;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        .note-box {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid rgba(255, 152, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .note-box h4 {
+            color: #FFB74D;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✈️ Aircraft Part Removal System</h1>
+            <p>Complete Demonstration Package for Manager Review</p>
+            <span class="demo-badge">DEMO VERSION 2.0</span>
+        </div>
+        
+        <div class="links-grid">
+            <a href="file:///C:/Users/s.aghayani/Downloads/deepseek_html_20251203_2aa7f2.html" class="link-card" target="_blank">
+                <span class="link-icon">🚀</span>
+                <h3><span class="status-indicator status-live"></span> Live Working Form</h3>
+                <p>Interactive form with local database. Fill form, save requests, and send to WhatsApp.</p>
+                <div style="color: #4FC3F7; font-weight: bold; margin-top: 15px;">Click to Open →</div>
+            </a>
+            
+            <a href="https://sam97agha.app.n8n.cloud" class="link-card" target="_blank">
+                <span class="link-icon">🔧</span>
+                <h3>N8N Automation Dashboard</h3>
+                <p>View the automation workflows, webhook configurations, and data processing pipelines.</p>
+                <div style="color: #4FC3F7; font-weight: bold; margin-top: 15px;">Login Required →</div>
+            </a>
+            
+            <a href="https://github.com" class="link-card" target="_blank">
+                <span class="link-icon">📁</span>
+                <h3>Source Code Repository</h3>
+                <p>Complete HTML/CSS/JavaScript source code with detailed comments and documentation.</p>
+                <div style="color: #4FC3F7; font-weight: bold; margin-top: 15px;">View Code →</div>
+            </a>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Instructions for Testing:</h3>
+            <ol>
+                <li><strong>Click "Live Working Form"</strong> - This opens the actual form on your computer</li>
+                <li><strong>Fill the form with sample data:</strong>
+                    <br>• Part Number: <code>A320-123456-789</code>
+                    <br>• Description: <code>Flap Track Assembly</code>
+                    <br>• Aircraft Type: <code>A320</code>
+                </li>
+                <li><strong>Click "Save to Database"</strong> - Data saves locally in your browser</li>
+                <li><strong>Switch to "Requests Database" tab</strong> - View all saved requests</li>
+                <li><strong>Click WhatsApp icon (📱)</strong> - Opens WhatsApp with formatted message</li>
+                <li><strong>Send the message</strong> - Test the complete workflow</li>
+            </ol>
+        </div>
+        
+        <div class="note-box">
+            <h4>⚠️ Important Note:</h4>
+            <p>The form works 100% locally on your computer. All data is saved in your browser's storage. 
+            WhatsApp integration works directly. For N8N integration, the form needs to be hosted online.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Aircraft Part Removal System v2.0 | Created for Management Review</p>
+            <p style="margin-top: 10px; font-size: 12px;">📧 Contact: s.aghayani | 📱 Support: +98 991 752 5002</p>
+        </div>
+    </div>
+
+    <script>
+        // Add click tracking
+        document.querySelectorAll('.link-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const cardTitle = this.querySelector('h3').textContent;
+                console.log(`Clicked: ${cardTitle}`);
+                alert(`Opening: ${cardTitle}\n\nIf it doesn't open, check popup blocker or open manually from Downloads folder.`);
+            });
+        });
+        
+        // Auto-open form after 3 seconds
+        setTimeout(() => {
+            const shouldAutoOpen = confirm('Open the Working Form automatically?');
+            if (shouldAutoOpen) {
+                window.open('file:///C:/Users/s.aghayani/Downloads/deepseek_html_20251203_2aa7f2.html', '_blank');
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
